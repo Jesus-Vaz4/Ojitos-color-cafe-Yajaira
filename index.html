@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ojitos Color Café 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 60px 20px;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+p {
+  max-width: 800px;
+  margin: auto;
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  padding: 25px;
+  border-radius: 15px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+}
+
+.event {
+  padding: 20px 40px;
+  width: 50%;
+  position: relative;
+}
+
+.left { left: 0; }
+.right { left: 50%; }
+
+.event::after {
+  content: '💖';
+  position: absolute;
+  top: 20px;
+  right: -15px;
+  background: #ff4b5c;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  line-height: 30px;
+}
+
+.right::after {
+  left: -15px;
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 15px 30px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin: 20px;
+}
+
+#yes {
+  background: #ff4b5c;
+  color: white;
+}
+
+#no {
+  background: white;
+  color: #ff4b5c;
+  position: absolute;
+}
+
+.heart {
+  position: fixed;
+  top: -10px;
+  font-size: 20px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<section>
+  <h1>Para Ojitos Color Café 💕</h1>
+  <p>
+    Yajaira Guadalupe Rodríguez Nájera,  
+    desde que llegaste a mi vida, todo es más bonito.
+  </p>
+</section>
+
+<section class="card">
+  <h2>⏳ Nuestro tiempo juntos</h2>
+  <p id="counter"></p>
+</section>
+
+<section>
+  <h2>🕰 Nuestra Historia</h2>
+
+  <div class="timeline">
+
+    <div class="event left">
+      <div class="card">
+        <h3>16 de diciembre de 2022 💖</h3>
+        <p>El día que empezó todo sin saber que sería para siempre.</p>
+        <!-- <img src="foto1.jpg"> -->
+      </div>
+    </div>
+
+    <div class="event right">
+      <div class="card">
+        <h3>Primer recuerdo importante 🌹</h3>
+        <p>Aquí escribe algo SOLO de ustedes.</p>
+        <!-- <img src="foto2.jpg"> -->
+      </div>
+    </div>
+
+    <div class="event left">
+      <div class="card">
+        <h3>Otro momento inolvidable ✨</h3>
+        <p>Este texto lo cambias tú.</p>
+        <!-- <img src="foto3.jpg"> -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="card">
+  <h2>💌 Carta para ti</h2>
+  <p>
+    Gracias por elegirme, por cuidarme y por ser mi lugar seguro.  
+    Prometo seguir caminando contigo, hoy y siempre.  
+    <br><br>
+    — Andrés Vázquez
+  </p>
+</section>
+
+<section>
+  <h2>¿Quieres seguir escribiendo esta historia conmigo? 💘</h2>
+  <button id="yes">Sí 💖</button>
+  <button id="no">No 😅</button>
+</section>
+
+<audio autoplay loop>
+  <source src="https://www.youtube.com/embed/lp-EO5I60KA">
+</audio>
+
+<script>
+// contador
+const startDate = new Date("2022-12-16");
+const counter = document.getElementById("counter");
+
+function updateCounter() {
+  const now = new Date();
+  const diff = now - startDate;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  counter.innerHTML = `Llevamos juntos <strong>${days}</strong> días 💖`;
+}
+updateCounter();
+
+// boton no huye
+const noBtn = document.getElementById("no");
+noBtn.addEventListener("mouseover", () => {
+  noBtn.style.top = Math.random() * window.innerHeight + "px";
+  noBtn.style.left = Math.random() * window.innerWidth + "px";
+});
+
+// boton si
+document.getElementById("yes").addEventListener("click", () => {
+  document.body.innerHTML = `
+    <section>
+      <h1>Sabía que dirías que sí 💍💖</h1>
+      <p>Te amo con todo mi corazón, hoy y siempre.</p>
+      <h2>— Andrés</h2>
+    </section>
+  `;
+});
+
+// corazones
+function heart() {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "💖";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 5000);
+}
+setInterval(heart, 300);
+</script>
+
+</body>
+</html>
