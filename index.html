@@ -505,7 +505,11 @@ h1{ font-size:42px; margin-bottom:30px; }
 </section>
 
 </div>
-
+  
+<audio id="musica" loop>
+  <source src="cancion.mp3" type="audio/mpeg">
+</audio>
+  
 <!-- MODAL PARA AGRANDAR FOTO -->
 <div id="imgModal" class="modal" onclick="cerrarImagen()">
   <img id="imgGrande">
@@ -590,6 +594,12 @@ function createHeart(){
 }
 
 setInterval(createHeart, 900);
+document.addEventListener("click", function(){
+const musica = document.getElementById("musica");
+musica.volume = 0.4;
+musica.play();
+}, { once: true }); 
+  
 </script>
 
 </body>
