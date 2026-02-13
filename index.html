@@ -1,236 +1,230 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Ojitos Color Café 💖</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nuestra Historia</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
-}
+  /* ====== BASE ====== */
+  body{
+    margin:0;
+    font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+    color:#fff;
+    text-align:center;
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    transition: background-image 1.5s ease-in-out;
+    overflow-x:hidden;
+  }
 
-section {
-  padding: 60px 20px;
-}
+  .overlay{
+    background: rgba(0,0,0,.55);
+    min-height:100vh;
+    padding:40px 0;
+  }
 
-h1 {
-  font-size: 3em;
-}
+  h1{ font-size:42px; margin:10px 0 30px; }
+  h2{ margin:30px 0 10px; }
 
-h2 {
-  margin-bottom: 20px;
-}
+  /* ====== TIMELINE ====== */
+  .timeline{
+    width:85%;
+    max-width:900px;
+    margin:30px auto;
+  }
 
-p {
-  max-width: 800px;
-  margin: auto;
-  font-size: 1.2em;
-  line-height: 1.6;
-}
+  .event{
+    background: rgba(255,255,255,.15);
+    margin:18px 0;
+    padding:18px 22px;
+    border-radius:16px;
+    cursor:pointer;
+    transition: transform .25s ease, background .25s ease;
+    backdrop-filter: blur(6px);
+    text-align:left;
+  }
+  .event:hover{ transform: scale(1.02); background: rgba(255,255,255,.18); }
 
-.card {
-  background: rgba(255,255,255,0.2);
-  padding: 25px;
-  border-radius: 15px;
-  margin: 20px auto;
-  max-width: 800px;
-}
+  .event-title{
+    font-size:18px;
+    font-weight:600;
+  }
 
-.timeline {
-  position: relative;
-  max-width: 900px;
-  margin: auto;
-}
+  .event-content{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .6s ease;
+    margin-top:10px;
+    line-height:1.6;
+  }
+  .event.active .event-content{ max-height:600px; }
 
-.timeline::after {
-  content: '';
-  position: absolute;
-  width: 4px;
-  background: white;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-}
+  .timeline-photo{
+    width:100%;
+    max-width:320px;
+    margin-top:14px;
+    border-radius:14px;
+    box-shadow:0 10px 24px rgba(0,0,0,.45);
+  }
 
-.event {
-  padding: 20px 40px;
-  width: 50%;
-  position: relative;
-}
+  /* ====== MENSAJE FINAL ====== */
+  .final-message{
+    margin:80px auto 40px;
+    width:85%;
+    max-width:900px;
+    font-size:22px;
+    font-style:italic;
+    line-height:1.8;
+    background: rgba(255,255,255,.12);
+    padding:36px;
+    border-radius:22px;
+    backdrop-filter: blur(6px);
+  }
 
-.left { left: 0; }
-.right { left: 50%; }
-
-.event::after {
-  content: '💖';
-  position: absolute;
-  top: 20px;
-  right: -15px;
-  background: #ff4b5c;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  line-height: 30px;
-}
-
-.right::after {
-  left: -15px;
-}
-
-img {
-  width: 100%;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-button {
-  padding: 15px 30px;
-  border-radius: 30px;
-  border: none;
-  font-size: 1.2em;
-  cursor: pointer;
-  margin: 20px;
-}
-
-#yes {
-  background: #ff4b5c;
-  color: white;
-}
-
-#no {
-  background: white;
-  color: #ff4b5c;
-  position: absolute;
-}
-
-.heart {
-  position: fixed;
-  top: -10px;
-  font-size: 20px;
-  animation: fall linear infinite;
-}
-
-@keyframes fall {
-  to { transform: translateY(100vh); }
-}
+  /* ====== CORAZONES ====== */
+  .heart{
+    position:fixed;
+    top:100vh;
+    color:rgba(255,255,255,.35);
+    font-size:18px;
+    animation: float 10s linear infinite;
+    pointer-events:none;
+  }
+  @keyframes float{
+    from{ transform: translateY(0); }
+    to{ transform: translateY(-120vh); }
+  }
 </style>
 </head>
 
 <body>
+<div class="overlay">
 
-<section>
-  <h1>Para Ojitos Color Café 💕</h1>
-  <p>
-    Yajaira Guadalupe Rodríguez Nájera,  
-    desde que llegaste a mi vida, todo es más bonito.
-  </p>
-</section>
+  <h1>Nuestra Historia 💕</h1>
 
-<section class="card">
-  <h2>⏳ Nuestro tiempo juntos</h2>
-  <p id="counter"></p>
-</section>
+  <section class="timeline">
 
-<section>
-  <h2>🕰 Nuestra Historia</h2>
-
-  <div class="timeline">
-
-    <div class="event left">
-      <div class="card">
-        <h3>16 de diciembre de 2022 💖</h3>
-        <p>El día que empezó todo sin saber que sería para siempre.</p>
-        <!-- <img src="foto1.jpg"> -->
+    <!-- EVENTO INICIO -->
+    <div class="event" onclick="toggleEvent(this)">
+      <div class="event-title">16 de Diciembre de 2022 ❤️</div>
+      <div class="event-content">
+        <p><strong>Lugar:</strong> Donde comenzó todo</p>
+        <p><strong>Fecha:</strong> 16/12/2022</p>
+        <p><strong>Recuerdo:</strong>
+          El día que empezó nuestra historia, sin saber todo lo que vendría después.
+        </p>
+        <!-- <img src="cita1.jpg" class="timeline-photo"> -->
       </div>
     </div>
 
-    <div class="event right">
-      <div class="card">
-        <h3>Primer recuerdo importante 🌹</h3>
-        <p>Aquí escribe algo SOLO de ustedes.</p>
-        <!-- <img src="foto2.jpg"> -->
+    <!-- EVENTO EMBARAZO -->
+    <div class="event" onclick="toggleEvent(this)">
+      <div class="event-title">29 de Abril de 2023 🤍</div>
+      <div class="event-content">
+        <p><strong>Lugar:</strong> El momento en que cambió todo</p>
+        <p><strong>Fecha:</strong> 29/04/2023</p>
+        <p><strong>Recuerdo:</strong>
+          Ese día supimos que una pequeña vida venía en camino.
+          Entre nervios, ilusión y un miedo bonito,
+          nació un amor que nunca habíamos sentido.
+        </p>
       </div>
     </div>
 
-    <div class="event left">
-      <div class="card">
-        <h3>Otro momento inolvidable ✨</h3>
-        <p>Este texto lo cambias tú.</p>
-        <!-- <img src="foto3.jpg"> -->
+    <!-- EVENTO DESPEDIDA -->
+    <div class="event" onclick="toggleEvent(this)">
+      <div class="event-title">5 de Agosto de 2023 🕊️</div>
+      <div class="event-content">
+        <p><strong>Lugar:</strong> En silencio, en nuestro corazón</p>
+        <p><strong>Fecha:</strong> 05/08/2023</p>
+        <p><strong>Recuerdo:</strong>
+          Hubo un amor que no llegó a quedarse en nuestros brazos,
+          pero que vivirá siempre en nuestra memoria.
+          Nos enseñó lo profundo que podíamos amar,
+          incluso sin haberlo visto crecer.
+        </p>
       </div>
     </div>
 
-  </div>
-</section>
+    <!-- AGREGA MÁS EVENTOS SI QUIERES -->
+    <!--
+    <div class="event" onclick="toggleEvent(this)">
+      <div class="event-title">Otro momento ✨</div>
+      <div class="event-content">
+        <p><strong>Lugar:</strong> </p>
+        <p><strong>Fecha:</strong> </p>
+        <p><strong>Recuerdo:</strong> </p>
+        <img src="recuerdo1.jpg" class="timeline-photo">
+      </div>
+    </div>
+    -->
 
-<section class="card">
-  <h2>💌 Carta para ti</h2>
-  <p>
-    Gracias por elegirme, por cuidarme y por ser mi lugar seguro.  
-    Prometo seguir caminando contigo, hoy y siempre.  
-    <br><br>
-    — Andrés Vázquez
-  </p>
-</section>
+  </section>
 
-<section>
-  <h2>¿Quieres seguir escribiendo esta historia conmigo? 💘</h2>
-  <button id="yes">Sí 💖</button>
-  <button id="no">No 😅</button>
-</section>
+  <section class="final-message">
+    <h2>Si algún día vuelves aquí…</h2>
+    <p id="typewriter"></p>
+  </section>
 
-<audio autoplay loop>
-  <source src="https://www.youtube.com/embed/lp-EO5I60KA">
-</audio>
+</div>
 
 <script>
-// contador
-const startDate = new Date("2022-12-16");
-const counter = document.getElementById("counter");
+  /* ====== FONDOS DINÁMICOS (15s) ====== */
+  const backgrounds = ["fondo1.jpg","fondo2.jpg","fondo3.jpg"];
+  let bgIndex = 0;
+  function changeBackground(){
+    document.body.style.backgroundImage = `url('${backgrounds[bgIndex]}')`;
+    bgIndex = (bgIndex + 1) % backgrounds.length;
+  }
+  changeBackground();
+  setInterval(changeBackground, 15000);
 
-function updateCounter() {
-  const now = new Date();
-  const diff = now - startDate;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  counter.innerHTML = `Llevamos juntos <strong>${days}</strong> días 💖`;
-}
-updateCounter();
+  /* ====== TIMELINE ====== */
+  function toggleEvent(el){ el.classList.toggle("active"); }
 
-// boton no huye
-const noBtn = document.getElementById("no");
-noBtn.addEventListener("mouseover", () => {
-  noBtn.style.top = Math.random() * window.innerHeight + "px";
-  noBtn.style.left = Math.random() * window.innerWidth + "px";
-});
+  /* ====== TYPEWRITER ====== */
+  const text = `Hay amores que hacen ruido,
+y hay otros que se quedan en silencio.
 
-// boton si
-document.getElementById("yes").addEventListener("click", () => {
-  document.body.innerHTML = `
-    <section>
-      <h1>Sabía que dirías que sí 💍💖</h1>
-      <p>Te amo con todo mi corazón, hoy y siempre.</p>
-      <h2>— Andrés</h2>
-    </section>
-  `;
-});
+Lo nuestro nunca fue perfecto,
+pero fue verdadero.
+Y eso, a veces, vale más que cualquier final feliz.
 
-// corazones
-function heart() {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "💖";
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.animationDuration = (Math.random() * 3 + 2) + "s";
-  document.body.appendChild(h);
-  setTimeout(() => h.remove(), 5000);
-}
-setInterval(heart, 300);
+No guardo rencor.
+No guardo orgullo.
+Solo guardo la certeza de que lo que sentí por ti fue limpio.
+
+Y aunque el tiempo avance,
+aunque la vida nos lleve por caminos distintos…
+
+hay algo que no cambia.
+
+Este tonto,
+en silencio,
+aún te ama.`;
+
+  let i=0, speed=40;
+  function typeWriter(){
+    if(i < text.length){
+      document.getElementById("typewriter").innerHTML += text.charAt(i);
+      i++; setTimeout(typeWriter, speed);
+    }
+  }
+  window.onload = typeWriter;
+
+  /* ====== CORAZONES ====== */
+  function createHeart(){
+    const h=document.createElement("div");
+    h.className="heart";
+    h.textContent="❤";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=(Math.random()*5+6)+"s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),11000);
+  }
+  setInterval(createHeart, 900);
 </script>
 
 </body>
