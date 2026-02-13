@@ -1,230 +1,280 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nuestra Historia</title>
 
 <style>
-  /* ====== BASE ====== */
-  body{
-    margin:0;
-    font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
-    color:#fff;
-    text-align:center;
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
-    transition: background-image 1.5s ease-in-out;
-    overflow-x:hidden;
-  }
+body{
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  color:white;
+  text-align:center;
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  transition: background-image 1.5s ease-in-out;
+  overflow-x:hidden;
+}
 
-  .overlay{
-    background: rgba(0,0,0,.55);
-    min-height:100vh;
-    padding:40px 0;
-  }
+.overlay{
+  background:rgba(0,0,0,0.55);
+  min-height:100vh;
+  padding:40px 0;
+}
 
-  h1{ font-size:42px; margin:10px 0 30px; }
-  h2{ margin:30px 0 10px; }
+h1{ font-size:42px; margin-bottom:30px; }
 
-  /* ====== TIMELINE ====== */
-  .timeline{
-    width:85%;
-    max-width:900px;
-    margin:30px auto;
-  }
+.timeline{
+  width:85%;
+  max-width:900px;
+  margin:auto;
+  text-align:left;
+}
 
-  .event{
-    background: rgba(255,255,255,.15);
-    margin:18px 0;
-    padding:18px 22px;
-    border-radius:16px;
-    cursor:pointer;
-    transition: transform .25s ease, background .25s ease;
-    backdrop-filter: blur(6px);
-    text-align:left;
-  }
-  .event:hover{ transform: scale(1.02); background: rgba(255,255,255,.18); }
+.event{
+  background:rgba(255,255,255,0.15);
+  margin:20px 0;
+  padding:20px;
+  border-radius:15px;
+  cursor:pointer;
+  transition:0.3s;
+  backdrop-filter:blur(6px);
+}
 
-  .event-title{
-    font-size:18px;
-    font-weight:600;
-  }
+.event:hover{ transform:scale(1.02); }
 
-  .event-content{
-    max-height:0;
-    overflow:hidden;
-    transition:max-height .6s ease;
-    margin-top:10px;
-    line-height:1.6;
-  }
-  .event.active .event-content{ max-height:600px; }
+.event-title{
+  font-weight:bold;
+  font-size:18px;
+}
 
-  .timeline-photo{
-    width:100%;
-    max-width:320px;
-    margin-top:14px;
-    border-radius:14px;
-    box-shadow:0 10px 24px rgba(0,0,0,.45);
-  }
+.event-content{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.6s ease;
+  margin-top:10px;
+  line-height:1.6;
+}
 
-  /* ====== MENSAJE FINAL ====== */
-  .final-message{
-    margin:80px auto 40px;
-    width:85%;
-    max-width:900px;
-    font-size:22px;
-    font-style:italic;
-    line-height:1.8;
-    background: rgba(255,255,255,.12);
-    padding:36px;
-    border-radius:22px;
-    backdrop-filter: blur(6px);
-  }
+.event.active .event-content{
+  max-height:1000px;
+}
 
-  /* ====== CORAZONES ====== */
-  .heart{
-    position:fixed;
-    top:100vh;
-    color:rgba(255,255,255,.35);
-    font-size:18px;
-    animation: float 10s linear infinite;
-    pointer-events:none;
-  }
-  @keyframes float{
-    from{ transform: translateY(0); }
-    to{ transform: translateY(-120vh); }
-  }
+.timeline-photo{
+  width:100%;
+  max-width:350px;
+  margin-top:15px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.timeline-photo:hover{
+  transform:scale(1.05);
+}
+
+/* MODAL IMAGEN */
+.modal{
+  display:none;
+  position:fixed;
+  z-index:999;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+}
+
+.modal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:20px;
+}
+
+.final-message{
+  margin:80px auto;
+  width:85%;
+  max-width:900px;
+  font-size:22px;
+  font-style:italic;
+  line-height:1.8;
+  background:rgba(255,255,255,0.1);
+  padding:40px;
+  border-radius:20px;
+  backdrop-filter:blur(6px);
+}
+
+.heart{
+  position:fixed;
+  color:rgba(255,255,255,0.35);
+  font-size:18px;
+  animation:float 10s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes float{
+  from{ transform:translateY(100vh); }
+  to{ transform:translateY(-120vh); }
+}
 </style>
 </head>
 
 <body>
 <div class="overlay">
 
-  <h1>Nuestra Historia 💕</h1>
+<h1>Nuestra Historia 💕</h1>
 
-  <section class="timeline">
+<section class="timeline">
 
-    <!-- EVENTO INICIO -->
-    <div class="event" onclick="toggleEvent(this)">
-      <div class="event-title">16 de Diciembre de 2022 ❤️</div>
-      <div class="event-content">
-        <p><strong>Lugar:</strong> Donde comenzó todo</p>
-        <p><strong>Fecha:</strong> 16/12/2022</p>
-        <p><strong>Recuerdo:</strong>
-          El día que empezó nuestra historia, sin saber todo lo que vendría después.
-        </p>
-        <!-- <img src="cita1.jpg" class="timeline-photo"> -->
-      </div>
-    </div>
+<!-- EJEMPLO SOLO TEXTO -->
+<div class="event" onclick="toggleEvent(this)">
+  <div class="event-title">16 de Diciembre de 2022 ❤️</div>
+  <div class="event-content">
+    <p><strong>Lugar:</strong> Donde comenzó todo</p>
+    <p><strong>Fecha:</strong> 16/12/2022</p>
+    <p><strong>Recuerdo:</strong>
+      El día que empezó nuestra historia sin saber todo lo que vendría después.
+    </p>
+  </div>
+</div>
 
-    <!-- EVENTO EMBARAZO -->
-    <div class="event" onclick="toggleEvent(this)">
-      <div class="event-title">29 de Abril de 2023 🤍</div>
-      <div class="event-content">
-        <p><strong>Lugar:</strong> El momento en que cambió todo</p>
-        <p><strong>Fecha:</strong> 29/04/2023</p>
-        <p><strong>Recuerdo:</strong>
-          Ese día supimos que una pequeña vida venía en camino.
-          Entre nervios, ilusión y un miedo bonito,
-          nació un amor que nunca habíamos sentido.
-        </p>
-      </div>
-    </div>
+<!-- EJEMPLO CON FOTO -->
+<div class="event" onclick="toggleEvent(this)">
+  <div class="event-title">Nuestro viaje 🌄</div>
+  <div class="event-content">
+    <p><strong>Lugar:</strong> Atlixco</p>
+    <p><strong>Fecha:</strong> Marzo 2024</p>
+    <p><strong>Recuerdo:</strong>
+      Contigo entendí que cualquier lugar puede sentirse como hogar.
+    </p>
+    <img src="viaje.jpg" class="timeline-photo">
+  </div>
+</div>
 
-    <!-- EVENTO DESPEDIDA -->
-    <div class="event" onclick="toggleEvent(this)">
-      <div class="event-title">5 de Agosto de 2023 🕊️</div>
-      <div class="event-content">
-        <p><strong>Lugar:</strong> En silencio, en nuestro corazón</p>
-        <p><strong>Fecha:</strong> 05/08/2023</p>
-        <p><strong>Recuerdo:</strong>
-          Hubo un amor que no llegó a quedarse en nuestros brazos,
-          pero que vivirá siempre en nuestra memoria.
-          Nos enseñó lo profundo que podíamos amar,
-          incluso sin haberlo visto crecer.
-        </p>
-      </div>
-    </div>
+<!-- EMBARAZO -->
+<div class="event" onclick="toggleEvent(this)">
+  <div class="event-title">29 de Abril de 2023 🤍</div>
+  <div class="event-content">
+    <p><strong>Lugar:</strong> El momento en que cambió todo</p>
+    <p><strong>Fecha:</strong> 29/04/2023</p>
+    <p><strong>Recuerdo:</strong>
+      Ese día supimos que una pequeña vida venía en camino.
+      Nació un amor que nunca habíamos sentido.
+    </p>
+  </div>
+</div>
 
-    <!-- AGREGA MÁS EVENTOS SI QUIERES -->
-    <!--
-    <div class="event" onclick="toggleEvent(this)">
-      <div class="event-title">Otro momento ✨</div>
-      <div class="event-content">
-        <p><strong>Lugar:</strong> </p>
-        <p><strong>Fecha:</strong> </p>
-        <p><strong>Recuerdo:</strong> </p>
-        <img src="recuerdo1.jpg" class="timeline-photo">
-      </div>
-    </div>
-    -->
+<!-- HOMENAJE -->
+<div class="event" onclick="toggleEvent(this)">
+  <div class="event-title">5 de Agosto de 2023 🕊️</div>
+  <div class="event-content">
+    <p><strong>Lugar:</strong> En silencio, en nuestro corazón</p>
+    <p><strong>Fecha:</strong> 05/08/2023</p>
+    <p><strong>Recuerdo:</strong>
+      Hubo un amor que no llegó a quedarse en nuestros brazos,
+      pero que vivirá siempre en nuestra memoria.
+    </p>
+  </div>
+</div>
 
-  </section>
+</section>
 
-  <section class="final-message">
-    <h2>Si algún día vuelves aquí…</h2>
-    <p id="typewriter"></p>
-  </section>
+<section class="final-message">
+  <h2>Si algún día vuelves aquí…</h2>
+  <p id="typewriter"></p>
+</section>
 
 </div>
 
+<!-- MODAL PARA AGRANDAR FOTO -->
+<div id="imgModal" class="modal" onclick="cerrarImagen()">
+  <img id="imgGrande">
+</div>
+
 <script>
-  /* ====== FONDOS DINÁMICOS (15s) ====== */
-  const backgrounds = ["fondo1.jpg","fondo2.jpg","fondo3.jpg"];
-  let bgIndex = 0;
-  function changeBackground(){
-    document.body.style.backgroundImage = `url('${backgrounds[bgIndex]}')`;
-    bgIndex = (bgIndex + 1) % backgrounds.length;
+/* FONDOS DINÁMICOS */
+const backgrounds = [
+  "fondo1.jpg",
+  "fondo2.jpg",
+  "fondo3.jpg",
+  "fondo4.jpg",
+  "fondo5.jpg"
+];
+
+let bgIndex = 0;
+
+function changeBackground(){
+  document.body.style.backgroundImage = `url('${backgrounds[bgIndex]}')`;
+  bgIndex = (bgIndex + 1) % backgrounds.length;
+}
+
+changeBackground();
+setInterval(changeBackground, 20000);
+
+/* TIMELINE */
+function toggleEvent(element){
+  element.classList.toggle("active");
+}
+
+/* AGRANDAR IMAGEN */
+document.addEventListener("click", function(e){
+  if(e.target.classList.contains("timeline-photo")){
+    document.getElementById("imgGrande").src = e.target.src;
+    document.getElementById("imgModal").style.display = "flex";
   }
-  changeBackground();
-  setInterval(changeBackground, 15000);
+});
 
-  /* ====== TIMELINE ====== */
-  function toggleEvent(el){ el.classList.toggle("active"); }
+function cerrarImagen(){
+  document.getElementById("imgModal").style.display = "none";
+}
 
-  /* ====== TYPEWRITER ====== */
-  const text = `Hay amores que hacen ruido,
+/* MENSAJE PROFUNDO */
+const text = `Hay amores que hacen ruido,
 y hay otros que se quedan en silencio.
 
 Lo nuestro nunca fue perfecto,
 pero fue verdadero.
-Y eso, a veces, vale más que cualquier final feliz.
 
 No guardo rencor.
 No guardo orgullo.
-Solo guardo la certeza de que lo que sentí por ti fue limpio.
 
-Y aunque el tiempo avance,
-aunque la vida nos lleve por caminos distintos…
-
-hay algo que no cambia.
+Y aunque la vida cambie todo…
 
 Este tonto,
 en silencio,
 aún te ama.`;
 
-  let i=0, speed=40;
-  function typeWriter(){
-    if(i < text.length){
-      document.getElementById("typewriter").innerHTML += text.charAt(i);
-      i++; setTimeout(typeWriter, speed);
-    }
-  }
-  window.onload = typeWriter;
+let i = 0;
+const speed = 40;
 
-  /* ====== CORAZONES ====== */
-  function createHeart(){
-    const h=document.createElement("div");
-    h.className="heart";
-    h.textContent="❤";
-    h.style.left=Math.random()*100+"vw";
-    h.style.animationDuration=(Math.random()*5+6)+"s";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),11000);
+function typeWriter(){
+  if(i < text.length){
+    document.getElementById("typewriter").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
   }
-  setInterval(createHeart, 900);
+}
+
+window.onload = typeWriter;
+
+/* CORAZONES */
+function createHeart(){
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random()*100+"vw";
+  heart.style.animationDuration = (Math.random()*5+6)+"s";
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{ heart.remove(); },11000);
+}
+
+setInterval(createHeart, 900);
 </script>
 
 </body>
