@@ -133,6 +133,40 @@ h1{ font-size:42px; margin-bottom:30px; }
   from{ transform:translateY(100vh); }
   to{ transform:translateY(-120vh); }
 }
+
+.sorpresa-container{
+  text-align:center;
+  margin-top:60px;
+}
+
+.btn-sorpresa{
+  background:transparent;
+  border:2px solid white;
+  padding:12px 25px;
+  border-radius:30px;
+  color:white;
+  cursor:pointer;
+  font-size:16px;
+  transition:0.3s;
+}
+
+.btn-sorpresa:hover{
+  background:white;
+  color:black;
+}
+
+.mensaje-oculto{
+  margin-top:20px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.6s ease;
+}
+
+.mensaje-oculto.mostrar{
+  opacity:1;
+  transform:translateY(0);
+}
+
 </style>
 </head>
 
