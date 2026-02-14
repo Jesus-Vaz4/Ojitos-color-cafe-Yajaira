@@ -167,6 +167,85 @@ h1{ font-size:42px; margin-bottom:30px; }
   transform:translateY(0);
 }
 
+/* SECCIÓN CLAVE */
+.seccion-clave{
+  margin:80px auto;
+  text-align:center;
+}
+
+.seccion-clave input{
+  padding:10px 15px;
+  border-radius:20px;
+  border:none;
+  outline:none;
+  font-size:16px;
+  margin:10px;
+}
+
+.seccion-clave button{
+  padding:10px 20px;
+  border-radius:20px;
+  border:2px solid white;
+  background:transparent;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.seccion-clave button:hover{
+  background:white;
+  color:black;
+}
+
+.error-clave{
+  color:#ffb3b3;
+  margin-top:10px;
+}
+
+/* OVERLAY CARTA */
+.overlay-carta{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+/* SOBRE */
+.sobre{
+  font-size:60px;
+  cursor:pointer;
+  animation: latido 1.5s infinite;
+}
+
+@keyframes latido{
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.1); }
+  100%{ transform:scale(1); }
+}
+
+/* CARTA */
+.carta-contenido{
+  display:none;
+  background:white;
+  color:black;
+  padding:40px;
+  border-radius:20px;
+  max-width:500px;
+  text-align:center;
+  animation: aparecerCarta 1s ease;
+}
+
+@keyframes aparecerCarta{
+  from{ opacity:0; transform:scale(0.8); }
+  to{ opacity:1; transform:scale(1); }
+}
+
 </style>
 </head>
 
@@ -565,6 +644,35 @@ h1{ font-size:42px; margin-bottom:30px; }
 </div>
   
 </section>
+
+<section class="seccion-clave">
+
+  <h2>Hay algo más…</h2>
+  <p>Si aún recuerdas la fecha que lo empezó todo, escríbela.</p>
+
+  <input type="password" id="inputClave" placeholder="Escribe la clave aquí">
+  <button onclick="verificarClave()">Abrir</button>
+
+  <div id="errorClave" class="error-clave"></div>
+
+</section>
+
+<div id="overlayCarta" class="overlay-carta">
+  <div class="sobre" onclick="abrirCarta()">
+    💌
+  </div>
+
+  <div id="cartaContenido" class="carta-contenido">
+    <h2>Para ti...</h2>
+    <p>
+      No sé qué pasará mañana.
+      No sé si el destino nos vuelva a cruzar igual.
+      Pero sí sé algo…
+      Lo que sentí contigo fue real.
+      Y lo real no se borra.
+    </p>
+  </div>
+</div>
 
 <section class="final-message">
   <h2>Si algún día vuelves aquí…</h2>
