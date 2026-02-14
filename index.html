@@ -121,6 +121,18 @@ h1{ font-size:42px; margin-bottom:30px; }
   backdrop-filter:blur(6px);
 }
 
+.frase-final{
+  margin-top:30px;
+  font-size:28px;
+  opacity:0;
+  transition: opacity 2s ease;
+  font-weight:600;
+}
+
+.frase-final.mostrar{
+  opacity:1;
+}
+
 .heart{
   position:fixed;
   color:rgba(255,255,255,0.35);
@@ -758,6 +770,11 @@ function typeWriter(){
     document.getElementById("typewriter").innerHTML += text.charAt(i);
     i++;
     setTimeout(typeWriter, speed);
+  } else {
+    document.getElementById("fraseFinal").innerText =
+      "Y si algún día decides volver… aquí seguiré. ❤️";
+    
+    document.getElementById("fraseFinal").classList.add("mostrar");
   }
 }
 
