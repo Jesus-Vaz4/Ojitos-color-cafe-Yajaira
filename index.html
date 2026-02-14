@@ -668,16 +668,28 @@ musica.play();
 }, { once: true }); 
 
 /* BOTÓN SORPRESA */
+let estadoSorpresa = 0;
+
 function mostrarSorpresa(){
   const mensaje = document.getElementById("mensajeOculto");
   const boton = document.querySelector(".btn-sorpresa");
 
-  mensaje.classList.toggle("mostrar");
+  estadoSorpresa++;
 
-  if(mensaje.classList.contains("mostrar")){
-    boton.innerText = "Te dije que no lo presionaras 😅";
-  } else {
-    boton.innerText = "No presiones esto…";
+  if(estadoSorpresa === 1){
+    mensaje.innerText = "Sabía que lo harías… porque siempre has sido curiosa conmigo ❤️";
+    mensaje.classList.add("mostrar");
+    boton.innerText = "¿Ves? No te advertí en serio…";
+  }
+
+  else if(estadoSorpresa === 2){
+    mensaje.innerText = "La verdad es que solo quería que llegaras hasta aquí… porque todavía significas mucho para mí.";
+    boton.innerText = "Está bien… una última cosa.";
+  }
+
+  else{
+    mensaje.innerText = "Gracias por leer todo esto. Si llegaste hasta aquí, es porque algo de nosotros aún vive.";
+    boton.innerText = "❤️";
   }
 }
 
