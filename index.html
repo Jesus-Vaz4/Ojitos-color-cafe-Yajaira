@@ -667,6 +667,20 @@ musica.volume = 0.4;
 musica.play();
 }, { once: true }); 
 
+/* BOTÓN SORPRESA */
+function mostrarSorpesa(){
+  const mensaje = document.getElementById("mensajeOculto");
+  const boton = document.querySelector(".btn-sorpresa");
+
+  mensaje.classList.toggle("mostrar");
+
+  if(mensaje.classList.contains("mostrar")){
+    boton.innerText = "Te dije que no lo presionaras 😅";
+  } else {
+    boton.innerText = "No presiones esto…";
+  }
+}
+
 // CONTADOR DESDE 16 DICIEMBRE 2022
 const fechaInicio = new Date("2022-12-16T00:00:00");
 
