@@ -819,6 +819,25 @@ function actualizarContador(){
 setInterval(actualizarContador, 1000);
 actualizarContador();
  
+/* ===== SECCIÓN CLAVE ===== */
+
+function verificarClave(){
+  const input = document.getElementById("inputClave").value;
+  const error = document.getElementById("errorClave");
+
+  if(input === "16122022"){
+    document.getElementById("overlayCarta").style.display = "flex";
+    error.innerText = "";
+  } else {
+    error.innerText = "Esa no es la fecha correcta… inténtalo otra vez 💭";
+  }
+}
+
+function abrirCarta(){
+  document.querySelector(".sobre").style.display = "none";
+  document.getElementById("cartaContenido").style.display = "block";
+}
+
 </script>
 
 </body>
