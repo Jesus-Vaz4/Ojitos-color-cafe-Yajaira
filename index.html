@@ -834,11 +834,17 @@ function verificarClave(){
 }
 
 function abrirCarta(){
-  document.querySelector(".sobre").style.display = "none";
-  document.getElementById("cartaContenido").style.display = "block";
+  const sobre = document.querySelector(".sobre");
+  const carta = document.getElementById("cartaContenido");
+
+  sobre.classList.add("abrir-animacion");
+
+  setTimeout(() => {
+    sobre.style.display = "none";
+    carta.style.display = "block";
+  }, 700);
 }
 
 </script>
-
 </body>
 </html>
