@@ -862,6 +862,12 @@ function cerrarCarta(){
   sobre.classList.remove("abrir-animacion");
 }
 
+document.getElementById("overlayCarta").addEventListener("click", function(e){
+  if(e.target.id === "overlayCarta"){
+    cerrarCarta();
+  }
+});
+
 </script>
 </body>
 </html>
