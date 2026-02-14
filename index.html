@@ -851,6 +851,17 @@ function abrirCarta(){
   }, 700);
 }
 
+function cerrarCarta(){
+  const overlay = document.getElementById("overlayCarta");
+  const sobre = document.querySelector(".sobre");
+  const carta = document.getElementById("cartaContenido");
+
+  overlay.style.display = "none";
+  carta.style.display = "none";
+  sobre.style.display = "block";
+  sobre.classList.remove("abrir-animacion");
+}
+
 </script>
 </body>
 </html>
